@@ -1,12 +1,93 @@
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap");
+
 :root {
-	font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+	font-family: "Inconsolata", system-ui, Avenir, Helvetica, Arial, sans-serif;
 	line-height: 1.5;
 	font-weight: 400;
 
+	background: #121213;
 	color: rgba(255, 255, 255, 0.87);
 
 	font-synthesis: none;
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+
+	--word-bg: #3a3a3c;
+	--word-color: #ffffff;
+	--kb-btn-bg: #565758;
+	--kb-btn-color: #ffffff;
+	--correct-word-bg: #6aaa64;
+	--correct-word-color: #ffffff;
+	--incorrect-place-bg: #d4934f;
+	--incorrect-place-color: #ffffff;
+}
+
+.guesses-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1rem;
+}
+
+.guess-row {
+	display: flex;
+	gap: 0.5rem;
+}
+
+.guess-tile {
+	background: var(--word-bg);
+	color: var(--word-color);
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	padding: 0.5rem 0.25rem;
+	font-weight: 600;
+	width: 30px;
+	height: 36px;
+	border: 0;
+	border-radius: 0.5rem;
+}
+
+.guess-tile.correct-word {
+	background: var(--correct-word-bg);
+	color: var(--correct-word-color);
+}
+
+.guess-tile.incorrect-place {
+	background: var(--incorrect-place-bg);
+	color: var(--incorrect-place-color);
+}
+
+.keyboard-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1rem;
+}
+
+.keyboard-row {
+	display: flex;
+	gap: 0.5rem;
+}
+
+.keyboard-button {
+	background: var(--kb-btn-bg);
+	color: var(--kb-btn-color);
+	font-size: 1.2rem;
+	font-weight: 600;
+	width: 40px;
+	height: 46px;
+	text-transform: uppercase;
+	border: 0;
+	border-radius: 0.5rem;
+}
+
+.keyboard-button:hover {
+	transform: scale(1.05);
+	transition: all 0.1s ease;
+}
+
+.keyboard-button:active {
+	transform: scale(0.98);
 }

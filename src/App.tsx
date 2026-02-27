@@ -1,11 +1,13 @@
-import { useState } from "react"
+import { Guesses } from "./Guesses"
+import { Keyboard } from "./Keyboard"
 
 export function App() {
-	const [count, setCount] = useState(0)
-
 	return (
-		<button onClick={() => setCount((count) => count + 1)}>
-			count is {count}
-		</button>
+		<>
+			<h1 style={{ textAlign: "center" }}>Wordle</h1>
+			<Guesses />
+			<div style={{ height: "2rem" }} />
+			<Keyboard />
+		</>
 	)
 }
