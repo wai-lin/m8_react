@@ -1,0 +1,7 @@
+{
+	"useTabs": true,
+	"quoteProps": "consistent",
+	"semi": false,
+	"singleQuote": false,
+	"plugins": ["prettier-plugin-organize-imports"]
+}
