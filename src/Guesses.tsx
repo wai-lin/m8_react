@@ -1,24 +1,33 @@
-const TOTAL_GUESSES = 6
+import type { GameHistory, TileStatus } from "./gameLogic"
 
-export function Guesses() {
+interface Props {
+	gameHistory: GameHistory
+}
+
+const tileClass: Record<TileStatus, string> = {
+	wrong: "",
+	correct: "correct-word",
+	incorrect_place: "incorrect-place",
+}
+
+export function Guesses({ gameHistory }: Props) {
 	return (
 		<section className="guesses-container">
-			{Array(TOTAL_GUESSES)
-				.fill(null)
-				.map((_, gidx) => (
-					<div key={`guess-${gidx}`} className="guess-row">
-						{Array(5)
-							.fill("__")
-							.map((char, cidx) => (
-								<span
-									key={`guess-${gidx}:char-${cidx}`}
-									className="guess-tile incorrect-place"
-								>
-									{char}
-								</span>
-							))}
-					</div>
-				))}
+			{gameHistory.map((row, rIdx) => (
+				<div key={`guess-${rIdx}`} className="guess-row">
+					{row.map((tile, tIdx) => {
+						const cn = tileClass[tile.status]
+						return (
+							<span
+								key={`guess-${rIdx}:char-${tIdx}`}
+								className={`guess-tile ${cn}`}
+							>
+								{tile.value}
+							</span>
+						)
+					})}
+				</div>
+			))}
 		</section>
 	)
 }
