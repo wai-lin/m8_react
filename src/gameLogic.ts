@@ -83,6 +83,17 @@ export function checkAnswer({
 			status: "won",
 		}
 
+	// Check if all guesses are used and answer is not correct
+	const allRowsFilled = tmpHistory.every((row) =>
+		row.every((tile) => tile.value !== "_"),
+	)
+	if (allRowsFilled && !hasCorrectAns(tmpHistory))
+		return {
+			correctAns,
+			history: tmpHistory,
+			status: "failed",
+		}
+
 	return {
 		correctAns,
 		history: tmpHistory,
