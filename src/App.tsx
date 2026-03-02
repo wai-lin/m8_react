@@ -62,7 +62,18 @@ export function App() {
 			<dialog ref={gameResultRef}>
 				{gameState.status === "won" && <h1>Yay.. you won! 🎉</h1>}
 				{gameState.status === "failed" && (
-					<h1>You failed 🥲 the answer is {WORD_OF_THE_DAY}</h1>
+					<h1>
+						You failed 🥲 the answer is{" "}
+						<span
+							style={{
+								fontWeight: 600,
+								textTransform: "uppercase",
+								color: "var(--correct-word-bg)",
+							}}
+						>
+							{WORD_OF_THE_DAY}
+						</span>
+					</h1>
 				)}
 			</dialog>
 		</main>
