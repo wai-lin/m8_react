@@ -1,0 +1,1 @@
+export { GuessTile } from "./GuessTile"

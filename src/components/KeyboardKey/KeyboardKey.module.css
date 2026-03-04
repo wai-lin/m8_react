@@ -1,0 +1,21 @@
+.button {
+	background: var(--kb-btn-bg);
+	color: var(--kb-btn-color);
+	font-size: 1.2rem;
+	font-weight: 600;
+	width: 40px;
+	height: 46px;
+	text-transform: uppercase;
+	border: 0;
+	border-radius: 0.5rem;
+	cursor: pointer;
+	transition: all 0.1s ease;
+}
+
+.button:hover {
+	transform: scale(1.05);
+}
+
+.button:active {
+	transform: scale(0.98);
+}

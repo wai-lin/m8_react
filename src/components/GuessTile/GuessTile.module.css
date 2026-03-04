@@ -1,0 +1,25 @@
+.tile {
+	background: var(--word-bg);
+	color: var(--word-color);
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	padding: 0.5rem 0.25rem;
+	font-size: 1.2rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	width: 30px;
+	height: 36px;
+	border: 0;
+	border-radius: 0.5rem;
+}
+
+.correctWord {
+	background: var(--correct-word-bg);
+	color: var(--correct-word-color);
+}
+
+.incorrectPlace {
+	background: var(--incorrect-place-bg);
+	color: var(--incorrect-place-color);
+}

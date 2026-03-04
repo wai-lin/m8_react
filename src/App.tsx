@@ -1,21 +1,15 @@
-import { useCallback, useEffect, useRef, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import { Guesses } from "./Guesses"
-import { Keyboard } from "./Keyboard"
+import { GameResult } from "./components/GameResult"
+import { Keyboard } from "./components/Keyboard"
 import { ALLOWED_KEYS } from "./constants"
 import { checkAnswer, initGameState } from "./gameLogic"
 
 const WORD_OF_THE_DAY = "logic"
 
 export function App() {
-	const gameResultRef = useRef<HTMLDialogElement>(null)
 	const [answer, setAnswer] = useState("")
 	const [gameState, setGameState] = useState(initGameState(WORD_OF_THE_DAY))
-
-	useEffect(() => {
-		if (gameState.status !== "playing") {
-			gameResultRef.current?.show()
-		}
-	}, [gameState.status])
 
 	const handleOnKeyPress = useCallback(
 		(key: string) => {
@@ -55,27 +49,11 @@ export function App() {
 
 	return (
 		<main>
-			<h1 style={{ textAlign: "center" }}>Wordle</h1>
+			<h1>Wordle</h1>
 			<Guesses gameHistory={gameState.history} />
-			<div style={{ height: "2rem" }} />
+			<div className="spacer" />
 			<Keyboard onKeyPress={handleOnKeyPress} />
-			<dialog ref={gameResultRef}>
-				{gameState.status === "won" && <h1>Yay.. you won! 🎉</h1>}
-				{gameState.status === "failed" && (
-					<h1>
-						You failed 🥲 the answer is{" "}
-						<span
-							style={{
-								fontWeight: 600,
-								textTransform: "uppercase",
-								color: "var(--correct-word-bg)",
-							}}
-						>
-							{WORD_OF_THE_DAY}
-						</span>
-					</h1>
-				)}
-			</dialog>
+			<GameResult status={gameState.status} answer={WORD_OF_THE_DAY} />
 		</main>
 	)
 }

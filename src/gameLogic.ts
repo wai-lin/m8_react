@@ -1,15 +1,14 @@
-export type GameStatus = "won" | "failed" | "playing"
-export type TileStatus = "wrong" | "correct" | "incorrect_place"
-export interface GameTileRecord {
-	value: string
-	status: TileStatus
-}
-export type GameHistory = Array<GameTileRecord[]>
-export type GameState = {
-	correctAns: string
-	status: GameStatus
-	history: GameHistory
-}
+import type {
+	CheckAnswerFnArgs,
+	GameHistory,
+	GameState,
+	GameStatus,
+	GameTileRecord,
+	TileStatus,
+} from "./types"
+
+// Re-export types for backward compatibility
+export type { GameHistory, GameState, GameStatus, GameTileRecord, TileStatus }
 
 const MAX_GUESS_CHANCE = 6
 
@@ -44,12 +43,6 @@ export function initGameState(correctAns: string): GameState {
 	}
 }
 
-export interface CheckAnswerFnArgs {
-	correctAns: string
-	history: GameHistory
-	tileVal: string
-	tilePos: number
-}
 export function checkAnswer({
 	correctAns,
 	history,
