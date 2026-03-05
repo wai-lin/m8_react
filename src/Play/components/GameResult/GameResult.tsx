@@ -1,5 +1,5 @@
+import type { GameStatus } from "#types"
 import { useEffect, useRef } from "react"
-import type { GameStatus } from "../../types"
 import styles from "./GameResult.module.css"
 
 interface Props {
@@ -17,12 +17,12 @@ export function GameResult({ status, answer }: Props) {
 	}, [status])
 
 	return (
-		<dialog ref={dialogRef} className={styles.modal}>
+		<dialog ref={dialogRef} className="modal">
 			{status === "won" && <h1>Yay.. you won! 🎉</h1>}
 			{status === "failed" && (
 				<h1>
 					You failed 🥲 the answer is{" "}
-					<span className="answer-highlight">{answer}</span>
+					<span className={styles.answerHighlight}>{answer}</span>
 				</h1>
 			)}
 		</dialog>

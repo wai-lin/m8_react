@@ -26,12 +26,6 @@
 	--dialog-overlay: rgba(0, 0, 0, 0.5);
 }
 
-.answer-highlight {
-	font-weight: 600;
-	text-transform: uppercase;
-	color: var(--correct-word-bg);
-}
-
 main > h1 {
 	text-align: center;
 }
@@ -40,14 +34,36 @@ main > h1 {
 	height: 2rem;
 }
 
-.guesses-container {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	gap: 1rem;
+.modal {
+	background: var(--dialog-bg);
+	color: var(--word-color);
+	border: 1px solid var(--dialog-border);
+	border-radius: 0.75rem;
+	padding: 2rem;
+	max-width: 90vw;
+	max-height: 90vh;
+	box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.7);
+	position: fixed;
+	top: 10%;
+	left: 50%;
+	transform: translateX(-50%);
+	margin: 0;
 }
 
-.guesses-row {
-	display: flex;
-	gap: 0.5rem;
+.modal::backdrop {
+	background: var(--dialog-overlay);
+	backdrop-filter: blur(4px);
+}
+
+.modal h1,
+.modal h2,
+.modal h3 {
+	margin: 0 0 1rem 0;
+	font-size: 1.5rem;
+	font-weight: 600;
+}
+
+.modal p {
+	margin: 0 0 1rem 0;
+	line-height: 1.6;
 }

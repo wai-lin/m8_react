@@ -1,0 +1,5 @@
+.answerHighlight {
+	font-weight: 600;
+	text-transform: uppercase;
+	color: var(--correct-word-bg);
+}

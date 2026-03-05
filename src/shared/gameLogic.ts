@@ -2,13 +2,8 @@ import type {
 	CheckAnswerFnArgs,
 	GameHistory,
 	GameState,
-	GameStatus,
-	GameTileRecord,
 	TileStatus,
-} from "./types"
-
-// Re-export types for backward compatibility
-export type { GameHistory, GameState, GameStatus, GameTileRecord, TileStatus }
+} from "#types"
 
 const MAX_GUESS_CHANCE = 6
 
