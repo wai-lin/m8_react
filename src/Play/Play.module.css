@@ -1,3 +1,12 @@
+.nav {
+	display: flex;
+	justify-content: end;
+}
+
+.link {
+	color: var(--word-color);
+}
+
 .title {
 	text-align: center;
 }

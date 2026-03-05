@@ -1,5 +1,7 @@
+import { cn } from "#src/shared/className.ts"
 import { checkAnswer, initGameState } from "#src/shared/gameLogic.ts"
 import { useCallback, useEffect, useState } from "react"
+import { Link } from "react-router"
 import { GameResult } from "./components/GameResult"
 import { Guesses } from "./components/Guesses"
 import { Keyboard } from "./components/Keyboard"
@@ -50,6 +52,11 @@ export function Play() {
 
 	return (
 		<main>
+			<nav className={cn(styles.nav, "container")}>
+				<Link to="/" className={styles.link}>
+					Close
+				</Link>
+			</nav>
 			<h1 className={styles.title}>Wordle</h1>
 			<Guesses gameHistory={gameState.history} />
 			<div className="spacer" />
