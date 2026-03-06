@@ -1,4 +1,5 @@
 import { format } from "date-fns"
+import { Link } from "react-router"
 import styles from "./Leaderboard.module.css"
 
 const dateFmt = "dd,MM,y (k:mm)"
@@ -13,6 +14,12 @@ const scores = [
 export function Leaderboard() {
 	return (
 		<main className="container">
+			<nav>
+				<Link to="/" className={styles.link}>
+					Back
+				</Link>
+			</nav>
+
 			<h1 className={styles.title}>Leaderboard</h1>
 
 			<ul className={styles.scores}>
