@@ -1,4 +1,4 @@
-import { isSameDate } from "./dateTime"
+import { isSameDay } from "date-fns"
 
 type WordOfTheDay = {
 	word: string
@@ -23,7 +23,7 @@ export const wordOfTheDay = () => {
 		return storedWord.word
 	}
 
-	if (isSameDate(new Date(storedWord.date), now) && storedWord.word !== "") {
+	if (isSameDay(new Date(storedWord.date), now) && storedWord.word !== "") {
 		return storedWord.word
 	} else {
 		storedWord.word = randomWord

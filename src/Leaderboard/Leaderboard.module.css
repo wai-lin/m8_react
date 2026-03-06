@@ -1,0 +1,29 @@
+.title {
+	text-align: center;
+}
+
+.scores {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.scores > li {
+	margin-bottom: 1rem;
+	padding: 0.25rem 0rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background: var(--word-bg);
+	border-radius: 0.5rem;
+}
+
+.score {
+	font-weight: 600;
+	font-size: 1.2rem;
+}
+
+.scoredAt {
+	font-size: 0.9rem;
+	color: var(--word-color);
+}

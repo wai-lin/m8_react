@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router"
 import { AppLayout } from "./AppLayout"
 import { Home } from "./Home"
+import { Leaderboard } from "./Leaderboard"
 
 const router = createBrowserRouter([
 	{
@@ -8,6 +9,7 @@ const router = createBrowserRouter([
 		children: [
 			{ index: true, element: <Home /> },
 			{ path: "play", element: <Home /> },
+			{ path: "leaderboard", element: <Leaderboard /> },
 		],
 	},
 ])
