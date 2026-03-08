@@ -24,7 +24,7 @@ export function Leaderboard() {
 
 			<ul className={styles.scores}>
 				{scores.map((s) => (
-					<li>
+					<li key={`${s.score}-${s.scoredAt}`}>
 						<span className={styles.score}>Score : {s.score}</span>
 						<span className={styles.scoredAt}>
 							{format(s.scoredAt, dateFmt)}

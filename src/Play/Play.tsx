@@ -54,7 +54,7 @@ export function Play() {
 		<main>
 			<nav className={cn(styles.nav, "container")}>
 				<Link to="/" className={styles.link}>
-					Close
+					Back
 				</Link>
 			</nav>
 			<h1 className={styles.title}>Wordle</h1>
