@@ -10,8 +10,8 @@ const router = createBrowserRouter(
 			element: <AppLayout />,
 			children: [
 				{ index: true, Component: Home },
-				{ path: "play", Component: Play },
-				{ path: "leaderboard", Component: Leaderboard },
+				{ path: "/play", Component: Play },
+				{ path: "/leaderboard", Component: Leaderboard },
 			],
 		},
 	],
