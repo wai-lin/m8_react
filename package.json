@@ -6,10 +6,14 @@
 	"scripts": {
 		"dev": "vite",
 		"build": "tsc -b && vite build",
-		"format": "prettier --write .",
-		"lint": "eslint .",
 		"test": "vitest",
-		"preview": "vite preview"
+		"preview": "vite preview",
+		"format": "prettier --write .",
+		"typecheck": "tsc --noEmit",
+		"lint": "eslint .",
+		"lint-fmt": "prettier --check .",
+		"depcheck": "knip --dependencies",
+		"check-all": "pnpm typecheck && pnpm lint && pnpm lint-fmt && pnpm depcheck"
 	},
 	"imports": {
 		"#types": "./src/types.ts",
@@ -35,6 +39,7 @@
 		"eslint-plugin-react-refresh": "^0.4.24",
 		"globals": "^16.5.0",
 		"jsdom": "^28.1.0",
+		"knip": "^5.86.0",
 		"prettier": "^3.8.1",
 		"prettier-plugin-organize-imports": "^4.3.0",
 		"typescript": "~5.9.3",
