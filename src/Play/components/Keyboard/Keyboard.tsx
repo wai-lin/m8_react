@@ -2,7 +2,7 @@ import { KEYBOARD_LAYOUT } from "#src/Play/utils/constants.ts"
 import styles from "./Keyboard.module.css"
 
 interface Props {
-	onKeyPress?: (key: string) => void | Promise<void>
+	onKeyPress?: (key: string) => void
 }
 
 export function Keyboard({ onKeyPress }: Props) {
@@ -21,18 +21,15 @@ export function Keyboard({ onKeyPress }: Props) {
 
 interface KeyboardKeyProps {
 	char: string
-	onPress?: (key: string) => void | Promise<void>
+	onPress?: (key: string) => void
 }
 
 function KeyboardKey({ char, onPress }: KeyboardKeyProps) {
 	const shouldUnderline = char === "f" || char === "j"
 	return (
 		<button
-			key={`kb-${char}`}
 			className={styles.button}
-			style={{
-				textDecoration: shouldUnderline ? "underline" : "",
-			}}
+			style={{ textDecoration: shouldUnderline ? "underline" : "" }}
 			onClick={() => onPress?.(char)}
 		>
 			{char}

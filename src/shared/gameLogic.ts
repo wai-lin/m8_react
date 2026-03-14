@@ -12,7 +12,7 @@ function checkTile(
 	tileVal: string,
 	tilePos: number,
 ): TileStatus {
-	const hasChar = correctAns.includes(tileVal)
+	const hasChar = correctAns.toLowerCase().includes(tileVal.toLowerCase())
 	if (hasChar && correctAns[tilePos] !== tileVal) return "incorrect_place"
 	else if (hasChar && correctAns[tilePos] === tileVal) return "correct"
 	return "wrong"

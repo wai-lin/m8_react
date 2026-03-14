@@ -21,6 +21,7 @@
 		"#src/*": "./src/*"
 	},
 	"dependencies": {
+		"@tanstack/react-query": "^5.90.21",
 		"classnames": "^2.5.1",
 		"date-fns": "^4.1.0",
 		"react": "^19.2.0",

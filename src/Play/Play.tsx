@@ -1,54 +1,40 @@
 import { cn } from "#src/shared/className.ts"
-import { checkAnswer, initGameState } from "#src/shared/gameLogic.ts"
-import { useCallback, useEffect, useState } from "react"
+import { useWordOfTheDay } from "#src/shared/hooks/useWordOfTheDay.ts"
 import { Link } from "react-router"
-import { GameResult } from "./components/GameResult"
-import { Guesses } from "./components/Guesses"
-import { Keyboard } from "./components/Keyboard"
+import { GameBoard } from "./components/GameBoard/index"
+import { GameProvider } from "./context/GameContext"
 import styles from "./Play.module.css"
-import { ALLOWED_KEYS } from "./utils/constants"
-
-const WORD_OF_THE_DAY = "logic"
 
 export function Play() {
-	const [answer, setAnswer] = useState("")
-	const [gameState, setGameState] = useState(initGameState(WORD_OF_THE_DAY))
+	const { data: word, isPending, isError } = useWordOfTheDay()
 
-	const handleOnKeyPress = useCallback(
-		(key: string) => {
-			if (gameState.status !== "playing") return
+	if (isPending) {
+		return (
+			<main>
+				<nav className={cn(styles.nav, "container")}>
+					<Link to="/" className={styles.link}>
+						Back
+					</Link>
+				</nav>
+				<p className={styles.status}>Loading today's word…</p>
+			</main>
+		)
+	}
 
-			const newAnswer = (answer.length >= 5 ? "" : answer) + key
-			const newGameState = checkAnswer({
-				correctAns: WORD_OF_THE_DAY,
-				history: gameState.history,
-				tileVal: key,
-				tilePos: Math.max(0, newAnswer.length - 1),
-			})
-
-			if (newGameState.status === "won") {
-				setGameState(newGameState)
-				return
-			}
-
-			setGameState(newGameState)
-			setAnswer(newAnswer)
-		},
-		[answer, gameState.history, gameState.status],
-	)
-
-	useEffect(() => {
-		const handler = (ev: KeyboardEvent) => {
-			const key = ev.key
-			if (ALLOWED_KEYS.includes(key) && gameState.status === "playing")
-				handleOnKeyPress(key)
-		}
-
-		window.addEventListener("keyup", handler)
-		return () => {
-			window.removeEventListener("keyup", handler)
-		}
-	}, [gameState.status, handleOnKeyPress])
+	if (isError || !word) {
+		return (
+			<main>
+				<nav className={cn(styles.nav, "container")}>
+					<Link to="/" className={styles.link}>
+						Back
+					</Link>
+				</nav>
+				<p className={styles.status}>
+					Failed to load today's word. Please try again later.
+				</p>
+			</main>
+		)
+	}
 
 	return (
 		<main>
@@ -58,10 +44,9 @@ export function Play() {
 				</Link>
 			</nav>
 			<h1 className={styles.title}>Wordle</h1>
-			<Guesses gameHistory={gameState.history} />
-			<div className="spacer" />
-			<Keyboard onKeyPress={handleOnKeyPress} />
-			<GameResult status={gameState.status} answer={WORD_OF_THE_DAY} />
+			<GameProvider word={word}>
+				<GameBoard />
+			</GameProvider>
 		</main>
 	)
 }

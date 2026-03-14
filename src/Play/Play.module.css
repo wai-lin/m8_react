@@ -10,3 +10,9 @@
 .title {
 	text-align: center;
 }
+
+.status {
+	text-align: center;
+	margin-top: 2rem;
+	color: var(--word-color);
+}
