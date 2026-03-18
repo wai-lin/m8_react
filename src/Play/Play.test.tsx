@@ -6,8 +6,6 @@ import { Play } from "./Play"
 vi.mock("#src/shared/hooks/useWordOfTheDay.ts", () => ({
 	useWordOfTheDay: () => ({
 		data: "apple",
-		isPending: false,
-		isError: false,
 	}),
 }))
 
